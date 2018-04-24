@@ -4,15 +4,15 @@
 #include <boost/container/vector.hpp>
 #include "csvgpureader/pair_reader.hpp"
 
-using Table = TableUintPair;
+using Table = boost::container::vector<std::pair<uint32_t, uint32_t>>;;
 
 
 /**
- *
+ * This main file is just for testing.  The software is meant to be called programmatically and not via CLI
  */
 int main(int argc, char** argv) {
 
-	TableUintPair const& table = CsvGpu::UintPair::parse_pair_data("./test/10M.csv");
+	Table const& table = CsvGpu::UintPair::load(argv[1], '\t');
 
 	int x = 0;
 	for ( auto i : table) {
